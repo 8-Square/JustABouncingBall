@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7vxlcjo5rco8"]
+
+[ext_resource type="PackedScene" uid="uid://bky553vk36but" path="res://Assets/Scenes/character.tscn" id="1_nbu75"]
+[ext_resource type="Script" uid="uid://dcsificax63vr" path="res://Assets/Scenes/character.gd" id="2_pfbgl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_glqrn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbu75"]
+size = Vector2(1154, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcp10"]
+size = Vector2(20, 60)
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.003921569, 0.003921569, 0.003921569, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="MiddleLine" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.8646751, 0.86467516, 0.8646751, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(576, 0)
+physics_material_override = SubResource("PhysicsMaterial_glqrn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+shape = SubResource("RectangleShape2D_nbu75")
+
+[node name="Polygon2D" type="Polygon2D" parent="TopWall"]
+polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2(576, 648)
+physics_material_override = SubResource("PhysicsMaterial_glqrn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+shape = SubResource("RectangleShape2D_nbu75")
+
+[node name="Polygon2D" type="Polygon2D" parent="BottomWall"]
+polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+position = Vector2(32, 312)
+script = ExtResource("2_pfbgl")
+player_id = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="CharacterBody2D2"]
+polygon = PackedVector2Array(-10, -30, 10, -30, 10, 30, -10, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+shape = SubResource("RectangleShape2D_lcp10")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_nbu75")]
+position = Vector2(1105, 312)
+player_id = 2
