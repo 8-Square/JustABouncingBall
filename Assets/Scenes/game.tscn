@@ -1,12 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7vxlcjo5rco8"]
+[gd_scene load_steps=9 format=3 uid="uid://b7vxlcjo5rco8"]
 
+[ext_resource type="Texture2D" uid="uid://44hpjib72pvu" path="res://Assets/Sprites/new_compressed_texture_2d.tres" id="1_lcp10"]
 [ext_resource type="PackedScene" uid="uid://bky553vk36but" path="res://Assets/Scenes/character.tscn" id="1_nbu75"]
 [ext_resource type="Script" uid="uid://dcsificax63vr" path="res://Assets/Scenes/character.gd" id="2_pfbgl"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pb48a"]
+texture = ExtResource("1_lcp10")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+modulate_color = Color(0.27022192, 0.27022192, 0.2702219, 1)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_glqrn"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfbgl"]
+size = Vector2(1154, 22)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbu75"]
-size = Vector2(1154, 20)
+size = Vector2(1154, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcp10"]
 size = Vector2(20, 60)
@@ -20,7 +30,39 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(576, 0)
+autoscroll = Vector2(10, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(287, 323)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("1_lcp10")
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 576.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_pb48a")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_pb48a")
+
 [node name="Background" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,7 +85,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0.8646751, 0.86467516, 0.8646751, 1)
+color = Color(0.7254902, 0.7254902, 0.7254902, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="TopWall" type="StaticBody2D" parent="."]
@@ -51,9 +93,11 @@ position = Vector2(576, 0)
 physics_material_override = SubResource("PhysicsMaterial_glqrn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
-shape = SubResource("RectangleShape2D_nbu75")
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_pfbgl")
 
 [node name="Polygon2D" type="Polygon2D" parent="TopWall"]
+color = Color(0.72464263, 0.7246426, 0.7246426, 1)
 polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
 
 [node name="BottomWall" type="StaticBody2D" parent="."]
@@ -61,9 +105,11 @@ position = Vector2(576, 648)
 physics_material_override = SubResource("PhysicsMaterial_glqrn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_nbu75")
 
 [node name="Polygon2D" type="Polygon2D" parent="BottomWall"]
+color = Color(0.7254902, 0.7254902, 0.7254902, 1)
 polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
