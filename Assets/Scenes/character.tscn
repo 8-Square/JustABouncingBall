@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bky553vk36but"]
 
-[ext_resource type="Script" uid="uid://dcsificax63vr" path="res://Assets/Scenes/character.gd" id="1_mgy0b"]
+[ext_resource type="Script" uid="uid://dcsificax63vr" path="res://Assets/Scripts/character.gd" id="1_mgy0b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0808a"]
 size = Vector2(20, 60)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Ball" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_mgy0b")
 player_id = 1
