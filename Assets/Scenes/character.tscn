@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dcsificax63vr" path="res://Assets/Scripts/character.gd" id="1_mgy0b"]
 
-[sub_resource type="ConcavePolygonShape2D" id="ConcavePolygonShape2D_mgy0b"]
-segments = PackedVector2Array(-10, 30, -10, -30, 10, 30, 10, -30, 15, 30, -15, 30, 15, 30, 0, 0, 15, -30, 0, 0, 15, -30, -15, -30, -15, -30, 0, 0, -15, 30, 0, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgy0b"]
+size = Vector2(20, 60)
 
 [node name="Ball" type="CharacterBody2D"]
 motion_mode = 1
@@ -14,4 +14,4 @@ player_id = 1
 polygon = PackedVector2Array(-10, -30, 10, -30, 10, 30, -10, 30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("ConcavePolygonShape2D_mgy0b")
+shape = SubResource("RectangleShape2D_mgy0b")

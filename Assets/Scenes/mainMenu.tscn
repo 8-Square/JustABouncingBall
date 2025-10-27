@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://cryd4qbva6nus"]
+
+[ext_resource type="Texture2D" uid="uid://t012cpnwp7xd" path="res://Assets/Sprites/2.png" id="1_h80b2"]
+[ext_resource type="FontFile" uid="uid://bmt3a0bbbisc5" path="res://Assets/Fonts/ChillPixels-Maximal.otf" id="2_hkjg3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hwn8f"]
+font = ExtResource("2_hkjg3")
+font_size = 75
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Parallax2D4" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(576, 576)
+autoscroll = Vector2(20, -10)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D4"]
+position = Vector2(287, 323)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("1_h80b2")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.003921569, 0.003921569, 0.003921569, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11764706, 0.11764706, 0.11764706, 0.81960785)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "
+JustABouncingBall"
+label_settings = SubResource("LabelSettings_hwn8f")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
