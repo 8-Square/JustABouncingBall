@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cryd4qbva6nus"]
+[gd_scene load_steps=13 format=3 uid="uid://cryd4qbva6nus"]
 
 [ext_resource type="Texture2D" uid="uid://t012cpnwp7xd" path="res://Assets/Sprites/2.png" id="1_h80b2"]
 [ext_resource type="FontFile" uid="uid://bmt3a0bbbisc5" path="res://Assets/Fonts/ChillPixels-Maximal.otf" id="2_hkjg3"]
@@ -6,6 +6,76 @@
 [sub_resource type="LabelSettings" id="LabelSettings_hwn8f"]
 font = ExtResource("2_hkjg3")
 font_size = 75
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h80b2"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.5019608)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+expand_margin_top = 2.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkjg3"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.5019608)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hwn8f"]
+bg_color = Color(0.10980392, 0.10980392, 0.10980392, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iiond"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.5019608)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+expand_margin_top = 2.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cu7og"]
+bg_color = Color(0.1111969, 0.11119682, 0.11119684, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mua11"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.5019608)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh2q1"]
+bg_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pr3u"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.5019608)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+expand_margin_top = 2.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ja6j"]
+bg_color = Color(0.10980392, 0.10980392, 0.10980392, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -56,7 +126,62 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "
+
 JustABouncingBall"
 label_settings = SubResource("LabelSettings_hwn8f")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.0
+offset_top = 20.5
+offset_right = 291.0
+offset_bottom = 187.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 35
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_h80b2")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_hkjg3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hwn8f")
+text = " Singleplayer "
+
+[node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_iiond")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cu7og")
+text = " Multiplayer "
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_mua11")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qh2q1")
+text = "Settings"
+
+[node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
+text = "Quit"
