@@ -61,16 +61,20 @@ shape = SubResource("RectangleShape2D_nbu75")
 color = Color(0.7254902, 0.7254902, 0.7254902, 1)
 polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
 
-[node name="PlayerOne" parent="." instance=ExtResource("1_nbu75")]
+[node name="PlayerOne" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("1_nbu75")]
 position = Vector2(33, 308)
+score_label = NodePath("../Score/ScorePlayerOne")
 
-[node name="PlayerTwo" parent="." instance=ExtResource("1_nbu75")]
+[node name="PlayerTwo" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("1_nbu75")]
 position = Vector2(1105, 308)
 player_id = 2
+score_label = NodePath("../Score/ScorePlayerTwo")
 
-[node name="Ball" parent="." instance=ExtResource("3_lcp10")]
+[node name="Ball" parent="." node_paths=PackedStringArray("player_one", "player_two") instance=ExtResource("3_lcp10")]
 position = Vector2(564, 308)
 motion_mode = 0
+player_one = NodePath("../PlayerOne")
+player_two = NodePath("../PlayerTwo")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -124,3 +128,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.11764706, 0.11764706, 0.11764706, 0.81960785)
+
+[node name="Score" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 16.0
+offset_bottom = 39.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ScorePlayerOne" type="Label" parent="Score"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 38
+text = "00"
+horizontal_alignment = 1
+
+[node name="ScorePlayerTwo" type="Label" parent="Score"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 38
+text = "00"
+horizontal_alignment = 1

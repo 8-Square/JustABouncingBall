@@ -1,7 +1,13 @@
 extends CharacterBody2D
 
+@onready var score_block = get_tree().current_scene.get_node("Score/")
+
+@export var player_one : Node2D
+@export var player_two : Node2D
+
 var SPEED: float = 350
 var collision_count: float = 0 
+
 
 func _ready() -> void:
 	initialize()
@@ -35,6 +41,14 @@ func initialize():
 
 
 func _on_ball_exited() -> void:
-	await get_tree().create_timer(0.75).timeout
 	collision_count = 0
+	if is_instance_valid(score_block):
+		if !score_block.visible:
+			score_block.visible = true
+	await get_tree().create_timer(0.75).timeout
+	if position.x > 0.0: 
+		player_one.score_system()
+	else:
+		player_two.score_system()
 	initialize()
+	

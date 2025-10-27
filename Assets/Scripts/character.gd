@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 @export var player_id: int
+@export var score_label: Label
 
-const SPEED: float = 400
+var SPEED: float = 400
+var score: int = 0
 
 func _process(delta: float) -> void:
 	#AHHHHHHHHHH THIS TOOK SO LONG
@@ -14,3 +16,7 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_released('up-%d' % player_id) or Input.is_action_just_released('down-%d' % player_id):
 		velocity = Vector2.ZERO
 	move_and_slide()
+
+func score_system():
+	score += 1
+	score_label.text = '%02d' % score
