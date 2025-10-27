@@ -3,7 +3,10 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$MainMenuScreen.show()
+	$SingleplayerScreen.hide()
+	$MultiplayerScreen.hide()
+	$SettingScreen.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,16 +15,26 @@ func _process(delta: float) -> void:
 
 
 func _on_singleplayer_pressed() -> void:
-	pass # Replace with function body.
-
+	$MainMenuScreen.hide()
+	$SingleplayerScreen.show()
 
 func _on_multiplayer_pressed() -> void:
-	pass # Replace with function body.
+	$MainMenuScreen.hide()
+	$MultiplayerScreen.show()
+	
 
 
 func _on_settings_pressed() -> void:
-	pass # Replace with function body.
-
+	$MainMenuScreen.hide()
+	$SettingScreen.show()
 
 func _on_quit_pressed() -> void:
-	pass # Replace with function body.
+	await get_tree().create_timer(0.4).timeout
+	get_tree().quit()
+
+
+func _on_back_pressed() -> void:
+	$SingleplayerScreen.hide()
+	$MultiplayerScreen.hide()
+	$SettingScreen.hide()
+	$MainMenuScreen.show()

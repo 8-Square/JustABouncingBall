@@ -1,0 +1,165 @@
+[gd_scene load_steps=11 format=3 uid="uid://drf7xuogampvc"]
+
+[ext_resource type="PackedScene" uid="uid://bky553vk36but" path="res://Assets/Scenes/character.tscn" id="1_5ja4a"]
+[ext_resource type="PackedScene" uid="uid://chj1ri0ylk2rn" path="res://Assets/Scenes/ball.tscn" id="2_f0n6a"]
+[ext_resource type="Texture2D" uid="uid://nhmfmjy8hxpr" path="res://Assets/Sprites/4.png" id="3_jded1"]
+[ext_resource type="Texture2D" uid="uid://cuapvqtd3o0vb" path="res://Assets/Sprites/3.png" id="4_j18yx"]
+[ext_resource type="Texture2D" uid="uid://t012cpnwp7xd" path="res://Assets/Sprites/2.png" id="5_j8gqd"]
+[ext_resource type="FontFile" uid="uid://bmt3a0bbbisc5" path="res://Assets/Fonts/ChillPixels-Maximal.otf" id="6_idhtr"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_glqrn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfbgl"]
+size = Vector2(1154, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbu75"]
+size = Vector2(1154, 22)
+
+[sub_resource type="LabelSettings" id="LabelSettings_of3jj"]
+line_spacing = 5.0
+paragraph_spacing = 5.0
+font = ExtResource("6_idhtr")
+font_size = 50
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MiddleLine" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.7254902, 0.7254902, 0.7254902, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(576, 0)
+physics_material_override = SubResource("PhysicsMaterial_glqrn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_pfbgl")
+
+[node name="Polygon2D" type="Polygon2D" parent="TopWall"]
+color = Color(0.72464263, 0.7246426, 0.7246426, 1)
+polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2(576, 648)
+physics_material_override = SubResource("PhysicsMaterial_glqrn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_nbu75")
+
+[node name="Polygon2D" type="Polygon2D" parent="BottomWall"]
+color = Color(0.7254902, 0.7254902, 0.7254902, 1)
+polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
+
+[node name="PlayerOne" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("1_5ja4a")]
+position = Vector2(33, 308)
+score_label = NodePath("../Score/ScorePlayerOne")
+
+[node name="PlayerTwo" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("1_5ja4a")]
+position = Vector2(1105, 308)
+player_id = 2
+score_label = NodePath("../Score/ScorePlayerTwo")
+
+[node name="Ball" parent="." node_paths=PackedStringArray("player_one", "player_two") instance=ExtResource("2_f0n6a")]
+position = Vector2(564, 308)
+motion_mode = 0
+player_one = NodePath("../PlayerOne")
+player_two = NodePath("../PlayerTwo")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.003921569, 0.003921569, 0.003921569, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D2" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(576, 576)
+autoscroll = Vector2(9, 3)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D2"]
+position = Vector2(287, 323)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("3_jded1")
+
+[node name="Parallax2D3" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(576, 576)
+autoscroll = Vector2(15, -6)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D3"]
+position = Vector2(287, 323)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("4_j18yx")
+
+[node name="Parallax2D4" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(576, 576)
+autoscroll = Vector2(20, -10)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D4"]
+position = Vector2(287, 323)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("5_j8gqd")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11764706, 0.11764706, 0.11764706, 0.81960785)
+
+[node name="Score" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 16.0
+offset_bottom = 39.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ScorePlayerOne" type="Label" parent="Score"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 38
+text = "00"
+label_settings = SubResource("LabelSettings_of3jj")
+horizontal_alignment = 1
+
+[node name="ScorePlayerTwo" type="Label" parent="Score"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 38
+text = "00"
+label_settings = SubResource("LabelSettings_of3jj")
+horizontal_alignment = 1
