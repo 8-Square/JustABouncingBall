@@ -175,6 +175,14 @@ size_flags_vertical = 3
 theme_override_constants/separation = 15
 alignment = 1
 
+[node name="InfRound" type="Button" parent="MultiplayerScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
+text = "No Limit"
+
 [node name="ThreeRound" type="Button" parent="MultiplayerScreen/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hkjg3")
@@ -199,14 +207,6 @@ theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
 text = "First to ten"
-
-[node name="InfRound" type="Button" parent="MultiplayerScreen/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_hkjg3")
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
-text = "No Limit"
 
 [node name="Back" type="Button" parent="MultiplayerScreen"]
 offset_right = 188.0
@@ -277,21 +277,7 @@ theme_override_constants/separation = 15
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuScreen/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_constants/separation = 35
-
-[node name="Singleplayer" type="Button" parent="MainMenuScreen/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_hkjg3")
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_h80b2")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_hkjg3")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hwn8f")
-text = " Singleplayer "
-
-[node name="Multiplayer" type="Button" parent="MainMenuScreen/VBoxContainer/HBoxContainer"]
+[node name="Multiplayer" type="Button" parent="MainMenuScreen/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hkjg3")
 theme_override_font_sizes/font_size = 45
@@ -349,8 +335,9 @@ grow_vertical = 2
 color = Color(0.11764706, 0.11764706, 0.11764706, 0.81960785)
 metadata/_edit_use_anchors_ = true
 
+[connection signal="pressed" from="MultiplayerScreen/VBoxContainer/InfRound" to="." method="_m_on_inf_round_pressed"]
+[connection signal="pressed" from="MultiplayerScreen/VBoxContainer/ThreeRound" to="." method="_on_M_three_round_pressed"]
 [connection signal="pressed" from="MultiplayerScreen/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="MainMenuScreen/VBoxContainer/HBoxContainer/Singleplayer" to="." method="_on_singleplayer_pressed"]
-[connection signal="pressed" from="MainMenuScreen/VBoxContainer/HBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="MainMenuScreen/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="MainMenuScreen/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainMenuScreen/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

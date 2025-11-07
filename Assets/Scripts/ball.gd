@@ -7,26 +7,31 @@ extends CharacterBody2D
 
 var SPEED: float = 350
 var collision_count: float = 0 
-
+var can_move: bool = true
 
 func _ready() -> void:
 	initialize()
 
 func _physics_process(delta: float) -> void:
+	if not can_move:
+		return
+	
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		collision_count += 1
 		print("COLLISION NUMBER IS ON ", collision_count)
 		velocity = velocity.bounce(collision.get_normal())
-		
+
 	if collision_count >= 32:
 		SPEED = 770
 	if collision_count >= 25:
 		SPEED = 650
-	elif collision_count >= 17:
+	elif collision_count >= 15:
 		SPEED = 550
 	elif collision_count >= 10:
 		SPEED = 450
+	elif collision_count >= 10:
+		SPEED = 400
 	else:
 		SPEED = 350
 	

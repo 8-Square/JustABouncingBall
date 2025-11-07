@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7vxlcjo5rco8"]
+[gd_scene load_steps=12 format=3 uid="uid://q67ysxocx2ed"]
 
+[ext_resource type="Script" uid="uid://bv7am44cocrfs" path="res://Assets/Scripts/levels/m_level.gd" id="1_bdgb7"]
 [ext_resource type="PackedScene" uid="uid://bky553vk36but" path="res://Assets/Scenes/character.tscn" id="1_nbu75"]
 [ext_resource type="PackedScene" uid="uid://chj1ri0ylk2rn" path="res://Assets/Scenes/ball.tscn" id="3_lcp10"]
 [ext_resource type="Texture2D" uid="uid://nhmfmjy8hxpr" path="res://Assets/Sprites/4.png" id="4_iusbg"]
@@ -30,6 +31,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bdgb7")
+finish_score = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="MiddleLine" type="ColorRect" parent="."]
