@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://36t4x5jis6wf"]
+[gd_scene load_steps=12 format=3 uid="uid://36t4x5jis6wf"]
 
-[ext_resource type="PackedScene" uid="uid://bky553vk36but" path="res://Assets/Scenes/character.tscn" id="1_6khih"]
-[ext_resource type="PackedScene" uid="uid://chj1ri0ylk2rn" path="res://Assets/Scenes/ball.tscn" id="2_8y3ut"]
-[ext_resource type="Texture2D" uid="uid://nhmfmjy8hxpr" path="res://Assets/Sprites/4.png" id="3_35wyg"]
-[ext_resource type="Texture2D" uid="uid://cuapvqtd3o0vb" path="res://Assets/Sprites/3.png" id="4_k8u8w"]
-[ext_resource type="Texture2D" uid="uid://t012cpnwp7xd" path="res://Assets/Sprites/2.png" id="5_05cnd"]
-[ext_resource type="FontFile" uid="uid://bmt3a0bbbisc5" path="res://Assets/Fonts/ChillPixels-Maximal.otf" id="6_hkatx"]
+[ext_resource type="Script" uid="uid://bv7am44cocrfs" path="res://Assets/Scripts/levels/m_level.gd" id="1_8y3ut"]
+[ext_resource type="PackedScene" uid="uid://bky553vk36but" path="res://Assets/Scenes/character.tscn" id="2_35wyg"]
+[ext_resource type="PackedScene" uid="uid://chj1ri0ylk2rn" path="res://Assets/Scenes/ball.tscn" id="3_k8u8w"]
+[ext_resource type="Texture2D" uid="uid://nhmfmjy8hxpr" path="res://Assets/Sprites/4.png" id="4_05cnd"]
+[ext_resource type="Texture2D" uid="uid://cuapvqtd3o0vb" path="res://Assets/Sprites/3.png" id="5_hkatx"]
+[ext_resource type="Texture2D" uid="uid://t012cpnwp7xd" path="res://Assets/Sprites/2.png" id="6_8kd6c"]
+[ext_resource type="FontFile" uid="uid://bmt3a0bbbisc5" path="res://Assets/Fonts/ChillPixels-Maximal.otf" id="7_n7kuv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_glqrn"]
 
@@ -18,7 +19,7 @@ size = Vector2(1154, 22)
 [sub_resource type="LabelSettings" id="LabelSettings_of3jj"]
 line_spacing = 5.0
 paragraph_spacing = 5.0
-font = ExtResource("6_hkatx")
+font = ExtResource("7_n7kuv")
 font_size = 50
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
@@ -30,6 +31,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8y3ut")
+finish_score = 5
 metadata/_edit_use_anchors_ = true
 
 [node name="MiddleLine" type="ColorRect" parent="."]
@@ -70,16 +73,16 @@ shape = SubResource("RectangleShape2D_nbu75")
 color = Color(0.7254902, 0.7254902, 0.7254902, 1)
 polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
 
-[node name="PlayerOne" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("1_6khih")]
+[node name="PlayerOne" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("2_35wyg")]
 position = Vector2(33, 308)
 score_label = NodePath("../Score/ScorePlayerOne")
 
-[node name="PlayerTwo" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("1_6khih")]
+[node name="PlayerTwo" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("2_35wyg")]
 position = Vector2(1105, 308)
 player_id = 2
 score_label = NodePath("../Score/ScorePlayerTwo")
 
-[node name="Ball" parent="." node_paths=PackedStringArray("player_one", "player_two") instance=ExtResource("2_8y3ut")]
+[node name="Ball" parent="." node_paths=PackedStringArray("player_one", "player_two") instance=ExtResource("3_k8u8w")]
 position = Vector2(564, 308)
 motion_mode = 0
 player_one = NodePath("../PlayerOne")
@@ -108,7 +111,7 @@ repeat_times = 10
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D2"]
 position = Vector2(287, 323)
 scale = Vector2(1.1, 1.1)
-texture = ExtResource("3_35wyg")
+texture = ExtResource("4_05cnd")
 
 [node name="Parallax2D3" type="Parallax2D" parent="CanvasLayer"]
 repeat_size = Vector2(576, 576)
@@ -118,7 +121,7 @@ repeat_times = 10
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D3"]
 position = Vector2(287, 323)
 scale = Vector2(1.1, 1.1)
-texture = ExtResource("4_k8u8w")
+texture = ExtResource("5_hkatx")
 
 [node name="Parallax2D4" type="Parallax2D" parent="CanvasLayer"]
 repeat_size = Vector2(576, 576)
@@ -128,7 +131,7 @@ repeat_times = 10
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D4"]
 position = Vector2(287, 323)
 scale = Vector2(1.1, 1.1)
-texture = ExtResource("5_05cnd")
+texture = ExtResource("6_8kd6c")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15

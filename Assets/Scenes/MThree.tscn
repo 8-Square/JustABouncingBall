@@ -139,7 +139,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.11764706, 0.11764706, 0.11764706, 0.81960785)
+color = Color(0.08468998, 0.08468991, 0.08468992, 0.81960785)
 
 [node name="Score" type="HBoxContainer" parent="."]
 visible = false

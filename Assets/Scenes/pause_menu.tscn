@@ -1,0 +1,151 @@
+[gd_scene load_steps=11 format=3 uid="uid://6cnsod5b7fw6"]
+
+[ext_resource type="Shader" uid="uid://8af3arrfntrn" path="res://Assets/Sprites/pause_menu.gdshader" id="1_6udtp"]
+[ext_resource type="Script" uid="uid://q1aqrsvt5ch1" path="res://Assets/Scripts/pause_menu.gd" id="1_dadan"]
+[ext_resource type="FontFile" uid="uid://bmt3a0bbbisc5" path="res://Assets/Fonts/ChillPixels-Maximal.otf" id="1_jbhf4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dadan"]
+shader = ExtResource("1_6udtp")
+shader_parameter/lod = 1.8000000855
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbhf4"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.5019608)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+expand_margin_top = 2.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6udtp"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.5019608)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dadan"]
+bg_color = Color(0.10980392, 0.10980392, 0.10980392, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="Animation" id="Animation_kvkuv"]
+resource_name = "fade_in"
+length = 0.45
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.011764706, 0.011764706, 0.011764706, 0), Color(0.08627451, 0.08627451, 0.08627451, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dadan"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.011764706, 0.011764706, 0.011764706, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_48c7y"]
+_data = {
+&"RESET": SubResource("Animation_dadan"),
+&"fade_in": SubResource("Animation_kvkuv")
+}
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dadan")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fade" type="ColorRect" parent="CanvasLayer"]
+visible = false
+z_index = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.011764706, 0.011764706, 0.011764706, 0)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_dadan")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.0627451, 0.0627451, 0.76862746)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.5
+offset_top = -118.0
+offset_right = 171.5
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Resume" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jbhf4")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_jbhf4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_6udtp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dadan")
+text = "Resume"
+
+[node name="Restart" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jbhf4")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_jbhf4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_6udtp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dadan")
+text = "Restart"
+
+[node name="Main Menu" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jbhf4")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_jbhf4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_6udtp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dadan")
+text = "Main Menu"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_48c7y")
+}
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
