@@ -16,11 +16,15 @@ func _on_resume_pressed() -> void:
 
 
 func _on_restart_pressed() -> void:
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.3).timeout
+	$CanvasLayer/Fade.show()
 	$AnimationPlayer.play("fade_in")
+	await $AnimationPlayer.animation_finished
 	get_tree().reload_current_scene()
 
 func _on_main_menu_pressed() -> void:
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.3).timeout
+	$CanvasLayer/Fade.show()
 	$AnimationPlayer.play("fade_in")
+	await $AnimationPlayer.animation_finished
 	get_tree().change_scene_to_file("res://Assets/Scenes/MainMenu.tscn")

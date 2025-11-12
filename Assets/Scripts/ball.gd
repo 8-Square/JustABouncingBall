@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Ball extends CharacterBody2D
 
 @onready var score_block = get_tree().current_scene.get_node("Score/")
 
@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 var SPEED: float = 350
 var collision_count: float = 0 
-var can_move: bool = true
+var can_control: bool = true
 
 
 var extra_offset = 0.0 if randf() < 0.5 else PI
@@ -17,7 +17,7 @@ func _ready() -> void:
 	initialize()
 
 func _physics_process(delta: float) -> void:
-	if not can_move:
+	if not can_control:
 		return
 	
 	var collision = move_and_collide(velocity * delta)
@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 
 	if collision_count >= 32:
 		SPEED = 770
-	if collision_count >= 25:
+	elif collision_count >= 25:
 		SPEED = 650
 	elif collision_count >= 15:
 		SPEED = 550

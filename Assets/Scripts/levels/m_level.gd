@@ -1,4 +1,4 @@
-extends Control
+class_name GameScreen extends Control
 
 @onready var score_block = $Score
 @onready var playerOne = $PlayerOne
@@ -7,14 +7,35 @@ extends Control
 
 @export var finish_score: int 
 
-# Called when the node enters the scene tree for the first time.
+var game_paused: bool = false
+
 func _ready() -> void:
 	playerOne.connect("score_achieved", Callable(self, "on_score_achieved"))
+	playerOne.add_to_group("Moveables")
+	playerTwo.add_to_group("Moveables")
+	ball.add_to_group("Moveables")
+	print(playerOne)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("cancel"):
+		game_paused = true
+		stop_movement()
+	elif game_paused == true and Input.is_action_just_pressed("cancel"):
+		print("WORKIUIGFNBDSUFN")
+		game_paused = false
+		$PauseMenu/CanvasLayer.visible = false
+		
+
+func stop_movement() -> void:
+	if game_paused == true:
+		for character in get_tree().get_nodes_in_group("Moveables"):
+			if "can_control" in character:
+				character.can_control = false
+		$PauseMenu/CanvasLayer.visible = true
+	if game_paused
+
+
 
 func on_score_achieved() -> void:
 	if playerOne.score >= finish_score || playerTwo.score >= finish_score:
