@@ -4,6 +4,7 @@ class_name GameScreen extends Control
 @onready var playerOne = $PlayerOne
 @onready var playerTwo = $PlayerTwo
 @onready var ball = $Ball
+@onready var pause_menu = $PauseMenu
 
 @export var finish_score: int 
 
@@ -14,34 +15,42 @@ func _ready() -> void:
 	playerOne.add_to_group("Moveables")
 	playerTwo.add_to_group("Moveables")
 	ball.add_to_group("Moveables")
-	print(playerOne)
+	pause_menu.connect("resume_pressed", Callable(self, "resume_pressed"))
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("cancel"):
+	if Input.is_action_just_pressed("cancel") and game_paused == false:
 		game_paused = true
-		stop_movement()
-	elif game_paused == true and Input.is_action_just_pressed("cancel"):
+		movement()
+	elif Input.is_action_just_pressed("cancel") and game_paused == true:
 		print("WORKIUIGFNBDSUFN")
 		game_paused = false
-		$PauseMenu/CanvasLayer.visible = false
-		
+		movement()
 
-func stop_movement() -> void:
+func movement() -> void:
 	if game_paused == true:
 		for character in get_tree().get_nodes_in_group("Moveables"):
 			if "can_control" in character:
 				character.can_control = false
 		$PauseMenu/CanvasLayer.visible = true
-	if game_paused
+	elif game_paused == false:
+		for character in get_tree().get_nodes_in_group("Moveables"):
+			if "can_control" in character:
+				character.can_control = true
+		$PauseMenu/CanvasLayer.visible = false
 
-
+func resume_pressed():
+	for character in get_tree().get_nodes_in_group("Moveables"):
+		if "can_control" in character:
+			character.can_control = true
+	$PauseMenu/CanvasLayer.visible = false
+	game_paused = false
 
 func on_score_achieved() -> void:
 	if playerOne.score >= finish_score || playerTwo.score >= finish_score:
 		playerOne.can_control = false
 		playerTwo.can_control = false
-		ball.can_move = false
+		ball.can_control = false
 		ball.visible = false
 		if playerOne.score >= finish_score:
 			print("PLAYER ONE WINS")

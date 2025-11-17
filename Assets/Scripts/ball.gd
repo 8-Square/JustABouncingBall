@@ -42,6 +42,7 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.normalized() * SPEED
 
 func initialize():
+	await get_tree().create_timer(0.5).timeout
 	velocity = SPEED * Vector2(cos(angle), sin(angle)).normalized()
 	position = get_viewport_rect().size / 2.0
 
