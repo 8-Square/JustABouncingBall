@@ -9,10 +9,9 @@ var SPEED: float = 350
 var collision_count: float = 0 
 var can_control: bool = true
 
-
 var extra_offset = 0.0 if randf() < 0.5 else PI
-var angle = extra_offset + randf_range(-PI/3.0, PI/3)
-var bounce_angle = randf_range(-3, 3)
+
+
 func _ready() -> void:
 	initialize()
 
@@ -21,11 +20,27 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	var collision = move_and_collide(velocity * delta)
+		
 	if collision:
-		collision_count += 1
-		print("COLLISION NUMBER IS ON ", collision_count)
-		velocity = velocity.bounce(collision.get_normal())
+		var collider = collision.get_collider()
+		var bounce_velocity = velocity.bounce(collision.get_normal())
+		
+		if collider is Player:
+			collision_count += 1
+			var bounce_angle = deg_to_rad(randf_range(-13, 13))
 
+			velocity = bounce_velocity.rotated(bounce_angle)
+			#print("HIT PLAYER")
+		else:
+			collision_count += 1
+			#print("COLLISION NUMBER IS ON ", collision_count)
+			velocity = velocity.bounce(collision.get_normal())
+	
+		
+	if collision_count >= 45:
+		SPEED = 1000
+	if collision_count >= 38:
+		SPEED = 880
 	if collision_count >= 32:
 		SPEED = 770
 	elif collision_count >= 25:
@@ -42,6 +57,8 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.normalized() * SPEED
 
 func initialize():
+	var angle = extra_offset + randf_range(-PI/3.0, PI/3)
+
 	await get_tree().create_timer(0.5).timeout
 	velocity = SPEED * Vector2(cos(angle), sin(angle)).normalized()
 	position = get_viewport_rect().size / 2.0
@@ -58,4 +75,3 @@ func _on_ball_exited() -> void:
 	else:
 		player_two.score_system()
 	initialize()
-	
