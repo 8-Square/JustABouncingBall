@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dh384p0y2ai21"]
+
+[ext_resource type="FontFile" uid="uid://bmt3a0bbbisc5" path="res://Assets/Fonts/ChillPixels-Maximal.otf" id="1_lady6"]
+
+[resource]
+font = ExtResource("1_lady6")
+font_size = 75

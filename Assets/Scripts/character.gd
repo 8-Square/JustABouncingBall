@@ -1,7 +1,9 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @export var player_id: int
 @export var score_label: Label
+
+@export var max_score: MaxScore
 
 signal score_achieved
 var SPEED: float = 400
@@ -26,6 +28,6 @@ func score_system():
 	score += 1
 	print('SCORE IS ', score)
 	score_label.text = '%02d' % score
-	if score >= 03:
+	if score >= max_score.FinishScore():
 		print("03 ACHEIVED")
 		emit_signal('score_achieved')
