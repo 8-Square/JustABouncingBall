@@ -5,10 +5,13 @@ class_name Ball extends CharacterBody2D
 @export var player_one : Node2D
 @export var player_two : Node2D
 
+var MoreRandom: bool = false
+var EvenMoreRandom: bool = false
+var SuperRandom: bool = false
+
 var SPEED: float = 350
 var collision_count: float = 0 
 var can_control: bool = true
-
 var extra_offset = 0.0 if randf() < 0.5 else PI
 
 
@@ -27,10 +30,16 @@ func _physics_process(delta: float) -> void:
 		
 		if collider is Player:
 			collision_count += 1
-			var bounce_angle = deg_to_rad(randf_range(-13, 13))
-
+			var bounce_angle = deg_to_rad(randf_range(-25, 25))
+			if not SuperRandom:
+				bounce_angle = deg_to_rad(randf_range(-20, 20))
+				if not EvenMoreRandom:
+					bounce_angle = deg_to_rad(randf_range(-16, 16))
+					if not MoreRandom:
+						bounce_angle = deg_to_rad(randf_range(-13, 13))
+					
 			velocity = bounce_velocity.rotated(bounce_angle)
-			#print("HIT PLAYER")
+			print(bounce_angle)
 		else:
 			collision_count += 1
 			#print("COLLISION NUMBER IS ON ", collision_count)
@@ -40,16 +49,19 @@ func _physics_process(delta: float) -> void:
 	if collision_count >= 45:
 		SPEED = 1000
 	if collision_count >= 38:
+		SuperRandom = true
 		SPEED = 880
 	if collision_count >= 32:
 		SPEED = 770
 	elif collision_count >= 25:
+		EvenMoreRandom = true
 		SPEED = 650
 	elif collision_count >= 15:
 		SPEED = 550
 	elif collision_count >= 10:
+		MoreRandom = true
 		SPEED = 450
-	elif collision_count >= 10:
+	elif collision_count >= 5:
 		SPEED = 400
 	else:
 		SPEED = 350
