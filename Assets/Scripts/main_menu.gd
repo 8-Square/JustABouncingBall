@@ -39,12 +39,20 @@ func _on_back_pressed() -> void:
 	$SettingScreen.hide()
 	$MainMenuScreen.show()
 
-
+# MULTIPLAYER ROUNDS
 func _m_on_inf_round_pressed() -> void:
 	await get_tree().create_timer(0.3).timeout
 	get_tree().change_scene_to_file("res://Assets/Scenes/MInf.tscn")
 
-
 func _on_M_three_round_pressed() -> void:
 	await get_tree().create_timer(0.3).timeout
 	get_tree().change_scene_to_file("res://Assets/Scenes/MThree.tscn")
+
+func _on_M_five_round_pressed() -> void:
+	await get_tree().create_timer(0.3).timeout
+	get_tree().change_scene_to_file("res://Assets/Scenes/MFive.tscn")
+
+func _on_M_ten_round_pressed() -> void:
+	await get_tree().create_timer(0.3).timeout
+	get_tree().change_scene_to_file("res://Assets/Scenes/MTen.tscn")
+	

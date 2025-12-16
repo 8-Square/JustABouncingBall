@@ -334,7 +334,10 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="MultiplayerScreen/VBoxContainer/InfRound" to="." method="_m_on_inf_round_pressed"]
 [connection signal="pressed" from="MultiplayerScreen/VBoxContainer/ThreeRound" to="." method="_on_M_three_round_pressed"]
+[connection signal="pressed" from="MultiplayerScreen/VBoxContainer/FiveRound" to="." method="_on_M_five_round_pressed"]
+[connection signal="pressed" from="MultiplayerScreen/VBoxContainer/TenRound" to="." method="_on_M_ten_round_pressed"]
 [connection signal="pressed" from="MultiplayerScreen/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="SettingScreen/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="MainMenuScreen/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="MainMenuScreen/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainMenuScreen/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://q67ysxocx2ed"]
+[gd_scene load_steps=16 format=3 uid="uid://q67ysxocx2ed"]
 
 [ext_resource type="Script" uid="uid://bv7am44cocrfs" path="res://Assets/Scripts/levels/m_level.gd" id="1_bdgb7"]
 [ext_resource type="PackedScene" uid="uid://bky553vk36but" path="res://Assets/Scenes/character.tscn" id="1_nbu75"]
 [ext_resource type="PackedScene" uid="uid://chj1ri0ylk2rn" path="res://Assets/Scenes/ball.tscn" id="3_lcp10"]
+[ext_resource type="Script" uid="uid://crhqvfllwk205" path="res://Assets/Scripts/level_character.gd" id="3_s7nmy"]
 [ext_resource type="Texture2D" uid="uid://nhmfmjy8hxpr" path="res://Assets/Sprites/4.png" id="4_iusbg"]
 [ext_resource type="Texture2D" uid="uid://cuapvqtd3o0vb" path="res://Assets/Sprites/3.png" id="5_of3jj"]
 [ext_resource type="Texture2D" uid="uid://t012cpnwp7xd" path="res://Assets/Sprites/2.png" id="6_fw1vi"]
@@ -76,16 +77,18 @@ shape = SubResource("RectangleShape2D_nbu75")
 color = Color(0.7254902, 0.7254902, 0.7254902, 1)
 polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
 
-[node name="PlayerOne" parent="." node_paths=PackedStringArray("score_label", "max_score") instance=ExtResource("1_nbu75")]
+[node name="PlayerOne" parent="." node_paths=PackedStringArray("max_score", "score_label") instance=ExtResource("1_nbu75")]
 position = Vector2(33, 308)
-score_label = NodePath("../Score/ScorePlayerOne")
+script = ExtResource("3_s7nmy")
 max_score = NodePath("../MaxScore")
+score_label = NodePath("../Score/ScorePlayerOne")
 
-[node name="PlayerTwo" parent="." node_paths=PackedStringArray("score_label", "max_score") instance=ExtResource("1_nbu75")]
+[node name="PlayerTwo" parent="." node_paths=PackedStringArray("max_score", "score_label") instance=ExtResource("1_nbu75")]
 position = Vector2(1105, 308)
+script = ExtResource("3_s7nmy")
+max_score = NodePath("../MaxScore")
 player_id = 2
 score_label = NodePath("../Score/ScorePlayerTwo")
-max_score = NodePath("../MaxScore")
 
 [node name="Ball" parent="." node_paths=PackedStringArray("player_one", "player_two") instance=ExtResource("3_lcp10")]
 position = Vector2(576, 324)
