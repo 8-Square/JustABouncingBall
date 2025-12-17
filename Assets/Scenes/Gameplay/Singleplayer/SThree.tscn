@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://6jv44nj0a8hg"]
+[gd_scene load_steps=16 format=3 uid="uid://6jv44nj0a8hg"]
 
 [ext_resource type="Script" uid="uid://dkl7weuj0dibu" path="res://Assets/Scripts/levels/s_level.gd" id="1_qmncn"]
 [ext_resource type="PackedScene" uid="uid://bky553vk36but" path="res://Assets/Scenes/Characters/character.tscn" id="2_imiuw"]
-[ext_resource type="Script" uid="uid://crhqvfllwk205" path="res://Assets/Scripts/level_character.gd" id="3_r0tnm"]
 [ext_resource type="PackedScene" uid="uid://bdgab03iludq6" path="res://Assets/Scenes/Characters/bot.tscn" id="4_qmncn"]
 [ext_resource type="PackedScene" uid="uid://chj1ri0ylk2rn" path="res://Assets/Scenes/Characters/ball.tscn" id="4_wilqd"]
 [ext_resource type="Texture2D" uid="uid://nhmfmjy8hxpr" path="res://Assets/Sprites/4.png" id="5_veraf"]
@@ -78,11 +77,10 @@ shape = SubResource("RectangleShape2D_nbu75")
 color = Color(0.7254902, 0.7254902, 0.7254902, 1)
 polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
 
-[node name="PlayerOne" parent="." node_paths=PackedStringArray("max_score", "score_label") instance=ExtResource("2_imiuw")]
+[node name="PlayerOne" parent="." node_paths=PackedStringArray("score_label", "max_score") instance=ExtResource("2_imiuw")]
 position = Vector2(33, 308)
-script = ExtResource("3_r0tnm")
-max_score = NodePath("../MaxScore")
 score_label = NodePath("../Score/ScorePlayerOne")
+max_score = NodePath("../MaxScore")
 
 [node name="Bot" parent="." node_paths=PackedStringArray("max_score", "ball", "score_label") instance=ExtResource("4_qmncn")]
 position = Vector2(1105, 308)

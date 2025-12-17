@@ -5,6 +5,7 @@ class_name Bot extends CharacterBody2D
 @export var max_score: Node
 @export var ball: CharacterBody2D
 @export var score_label: Label
+@onready var score_bit = $ScoreBit
 
 var ball_position: Vector2
 var distance: int
@@ -32,7 +33,8 @@ func _process(delta: float) -> void:
 func score_system():
 	score += 1
 	score_label.text = '%02d' % score
-	if score >= max_score.FinishScore():
-		#print("03 ACHEIVED")
-		score_achieved.emit(player_id)
+	
+	if max_score != null and score >= max_score.FinishScore():
+		if score_bit != null:
+			score_bit.on_score_achieved(player_id)
 		print(player_id)

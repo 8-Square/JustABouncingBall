@@ -9,9 +9,9 @@ func _ready() -> void:
 	playerOne.connect("score_achieved", Callable(self, "on_score_achieved"))
 	playerTwo.connect("score_achieved", Callable(self, "on_score_achieved"))
 	pause_menu.connect("resume_pressed", Callable(self, "resume_pressed"))
-	playerOne.add_to_group("Moveables")
-	playerTwo.add_to_group("Moveables")
-	ball.add_to_group("Moveables")
+	#playerOne.add_to_group("Moveables")
+	#playerTwo.add_to_group("Moveables")
+	#ball.add_to_group("Moveables")
 
 
 func on_score_achieved(player_id: int) -> void:

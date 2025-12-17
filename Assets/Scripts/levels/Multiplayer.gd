@@ -9,9 +9,10 @@ class_name GameScreen extends Control
 var game_paused: bool = false
 
 func _ready() -> void:
-	playerOne.add_to_group("Moveables")
-	playerTwo.add_to_group("Moveables")
-	ball.add_to_group("Moveables")
+	pass
+	#playerOne.add_to_group("Moveables")
+	#playerTwo.add_to_group("Moveables")
+	#ball.add_to_group("Moveables")
 
 
 func _process(delta: float) -> void:

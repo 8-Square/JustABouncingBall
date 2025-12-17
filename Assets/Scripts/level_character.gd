@@ -7,7 +7,10 @@ func score_system():
 	score += 1
 	#print('SCORE IS ', score)
 	score_label.text = '%02d' % score
-	if score >= max_score.FinishScore():
-		#print("03 ACHEIVED")
-		score_achieved.emit(player_id)
-		print(player_id)
+	if is_instance_valid(max_score):
+		if score >= max_score.FinishScore():
+			#print("03 ACHEIVED")
+			score_achieved.emit(player_id)
+			print(player_id)
+	else:
+		pass

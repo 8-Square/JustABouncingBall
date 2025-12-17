@@ -26,6 +26,10 @@ window/stretch/aspect="ignore"
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[global_group]
+
+Moveables="Characters That Move/Can Be Paused"
+
 [input]
 
 up-1={

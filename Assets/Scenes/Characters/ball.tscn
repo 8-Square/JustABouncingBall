@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://chj1ri0ylk2rn"]
 
-[ext_resource type="Script" uid="uid://cvetr5rctal4r" path="res://Assets/Scripts/level_ball.gd" id="1_1o2f0"]
+[ext_resource type="Script" uid="uid://cokawa2sw63if" path="res://Assets/Scripts/ball.gd" id="1_4e533"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cb73q"]
 size = Vector2(3, 3)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Ball" type="CharacterBody2D" groups=["Moveables"]]
 scale = Vector2(8, 8)
-script = ExtResource("1_1o2f0")
+script = ExtResource("1_4e533")
 player_contact = 25
 wall_contact = 10
 

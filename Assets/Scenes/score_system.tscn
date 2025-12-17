@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://crmcwarnjmsp"]
+
+[ext_resource type="Script" uid="uid://erphv7gx745w" path="res://score_system.gd" id="1_6mkt1"]
+
+[node name="ScoreBit" type="Node"]
+script = ExtResource("1_6mkt1")

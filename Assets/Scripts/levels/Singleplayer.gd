@@ -1,8 +1,6 @@
 class_name S_GameScreen extends Control
 
 @onready var score_block = $Score
-@onready var playerOne = $PlayerOne
-@onready var bot = $Bot
 @onready var ball = $Ball
 @onready var pause_menu = $PauseMenu
 
@@ -10,9 +8,6 @@ var game_paused: bool = false
 
 func _ready() -> void:
 	pause_menu.connect("resume_pressed", Callable(self, "resume_pressed"))
-	playerOne.add_to_group("Moveables")
-	bot.add_to_group("Moveables")
-	ball.add_to_group("Moveables")
 
 
 func _process(delta: float) -> void:
