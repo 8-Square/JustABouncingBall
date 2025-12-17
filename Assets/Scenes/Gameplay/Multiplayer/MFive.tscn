@@ -1,15 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://drf7xuogampvc"]
+[gd_scene load_steps=16 format=3 uid="uid://36t4x5jis6wf"]
 
-[ext_resource type="PackedScene" uid="uid://bky553vk36but" path="res://Assets/Scenes/character.tscn" id="1_5ja4a"]
-[ext_resource type="Script" uid="uid://ck06f13afie1b" path="res://Assets/Scripts/levels/m_inf.gd" id="1_j18yx"]
-[ext_resource type="PackedScene" uid="uid://chj1ri0ylk2rn" path="res://Assets/Scenes/ball.tscn" id="2_f0n6a"]
-[ext_resource type="Script" uid="uid://e8m110d1our5" path="res://Assets/Scripts/inf_character.gd" id="3_j8gqd"]
-[ext_resource type="Texture2D" uid="uid://nhmfmjy8hxpr" path="res://Assets/Sprites/4.png" id="3_jded1"]
-[ext_resource type="Texture2D" uid="uid://cuapvqtd3o0vb" path="res://Assets/Sprites/3.png" id="4_j18yx"]
-[ext_resource type="Script" uid="uid://cokawa2sw63if" path="res://Assets/Scripts/ball.gd" id="5_idhtr"]
-[ext_resource type="Texture2D" uid="uid://t012cpnwp7xd" path="res://Assets/Sprites/2.png" id="5_j8gqd"]
-[ext_resource type="FontFile" uid="uid://bmt3a0bbbisc5" path="res://Assets/Fonts/ChillPixels-Maximal.otf" id="6_idhtr"]
-[ext_resource type="PackedScene" uid="uid://6cnsod5b7fw6" path="res://Assets/Scenes/PauseMenu.tscn" id="9_rwrur"]
+[ext_resource type="Script" uid="uid://bv7am44cocrfs" path="res://Assets/Scripts/levels/m_level.gd" id="1_wwx5r"]
+[ext_resource type="PackedScene" uid="uid://bky553vk36but" path="res://Assets/Scenes/Characters/character.tscn" id="2_lwda8"]
+[ext_resource type="Script" uid="uid://crhqvfllwk205" path="res://Assets/Scripts/level_character.gd" id="3_pidop"]
+[ext_resource type="PackedScene" uid="uid://chj1ri0ylk2rn" path="res://Assets/Scenes/Characters/ball.tscn" id="4_e3icc"]
+[ext_resource type="Texture2D" uid="uid://nhmfmjy8hxpr" path="res://Assets/Sprites/4.png" id="5_fnj01"]
+[ext_resource type="Texture2D" uid="uid://cuapvqtd3o0vb" path="res://Assets/Sprites/3.png" id="6_tlsml"]
+[ext_resource type="Texture2D" uid="uid://t012cpnwp7xd" path="res://Assets/Sprites/2.png" id="7_fj83p"]
+[ext_resource type="FontFile" uid="uid://bmt3a0bbbisc5" path="res://Assets/Fonts/ChillPixels-Maximal.otf" id="8_urmsj"]
+[ext_resource type="Script" uid="uid://ymhsmss1yjcv" path="res://Assets/Scenes/max_score.gd" id="9_fd1cx"]
+[ext_resource type="PackedScene" uid="uid://6cnsod5b7fw6" path="res://Assets/Scenes/PauseMenu.tscn" id="10_x1bfe"]
+[ext_resource type="PackedScene" uid="uid://b403tcnpfhmcx" path="res://Assets/Scenes/GameOver.tscn" id="11_drsyk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_glqrn"]
 
@@ -22,19 +23,20 @@ size = Vector2(1154, 22)
 [sub_resource type="LabelSettings" id="LabelSettings_of3jj"]
 line_spacing = 5.0
 paragraph_spacing = 5.0
-font = ExtResource("6_idhtr")
+font = ExtResource("8_urmsj")
 font_size = 50
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Game" type="Control"]
+[node name="Game" type="Control" node_paths=PackedStringArray("finish_score")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_j18yx")
+script = ExtResource("1_wwx5r")
+finish_score = NodePath("MaxScore")
 metadata/_edit_use_anchors_ = true
 
 [node name="MiddleLine" type="ColorRect" parent="."]
@@ -75,20 +77,21 @@ shape = SubResource("RectangleShape2D_nbu75")
 color = Color(0.7254902, 0.7254902, 0.7254902, 1)
 polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
 
-[node name="PlayerOne" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("1_5ja4a")]
+[node name="PlayerOne" parent="." node_paths=PackedStringArray("max_score", "score_label") instance=ExtResource("2_lwda8")]
 position = Vector2(33, 308)
-script = ExtResource("3_j8gqd")
+script = ExtResource("3_pidop")
+max_score = NodePath("../MaxScore")
 score_label = NodePath("../Score/ScorePlayerOne")
 
-[node name="PlayerTwo" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("1_5ja4a")]
+[node name="PlayerTwo" parent="." node_paths=PackedStringArray("max_score", "score_label") instance=ExtResource("2_lwda8")]
 position = Vector2(1105, 308)
-script = ExtResource("3_j8gqd")
+script = ExtResource("3_pidop")
+max_score = NodePath("../MaxScore")
 player_id = 2
 score_label = NodePath("../Score/ScorePlayerTwo")
 
-[node name="Ball" parent="." node_paths=PackedStringArray("player_one", "player_two") instance=ExtResource("2_f0n6a")]
+[node name="Ball" parent="." node_paths=PackedStringArray("player_one", "player_two") instance=ExtResource("4_e3icc")]
 position = Vector2(576, 324)
-script = ExtResource("5_idhtr")
 player_one = NodePath("../PlayerOne")
 player_two = NodePath("../PlayerTwo")
 
@@ -115,7 +118,7 @@ repeat_times = 10
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D2"]
 position = Vector2(287, 323)
 scale = Vector2(1.1, 1.1)
-texture = ExtResource("3_jded1")
+texture = ExtResource("5_fnj01")
 
 [node name="Parallax2D3" type="Parallax2D" parent="CanvasLayer"]
 repeat_size = Vector2(576, 576)
@@ -125,7 +128,7 @@ repeat_times = 10
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D3"]
 position = Vector2(287, 323)
 scale = Vector2(1.1, 1.1)
-texture = ExtResource("4_j18yx")
+texture = ExtResource("6_tlsml")
 
 [node name="Parallax2D4" type="Parallax2D" parent="CanvasLayer"]
 repeat_size = Vector2(576, 576)
@@ -135,7 +138,7 @@ repeat_times = 10
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D4"]
 position = Vector2(287, 323)
 scale = Vector2(1.1, 1.1)
-texture = ExtResource("5_j8gqd")
+texture = ExtResource("7_fj83p")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -171,7 +174,11 @@ text = "00"
 label_settings = SubResource("LabelSettings_of3jj")
 horizontal_alignment = 1
 
-[node name="PauseMenu" parent="." instance=ExtResource("9_rwrur")]
+[node name="MaxScore" type="Node" parent="."]
+script = ExtResource("9_fd1cx")
+MaxScoreValue = 5
+
+[node name="PauseMenu" parent="." instance=ExtResource("10_x1bfe")]
 z_index = 3
 layout_mode = 1
 anchors_preset = -1
@@ -181,4 +188,14 @@ anchor_bottom = 0.9830247
 [node name="CanvasLayer" parent="PauseMenu" index="0"]
 visible = false
 
+[node name="WinMenu" parent="." instance=ExtResource("11_drsyk")]
+layout_mode = 1
+
+[node name="CanvasLayer" parent="WinMenu" index="0"]
+visible = false
+
+[node name="Fade" parent="WinMenu/CanvasLayer" index="0"]
+visible = true
+
 [editable path="PauseMenu"]
+[editable path="WinMenu"]

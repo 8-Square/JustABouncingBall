@@ -22,3 +22,7 @@ func _process(delta: float) -> void:
 		velocity = Vector2.ZERO
 
 	move_and_slide()
+
+func score_system():
+	score += 1
+	score_label.text = '%02d' % score

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bky553vk36but"]
+
+[ext_resource type="Script" uid="uid://dcsificax63vr" path="res://Assets/Scripts/character.gd" id="1_mgy0b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgy0b"]
+size = Vector2(20, 60)
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_mgy0b")
+player_id = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-10, -30, 10, -30, 10, 30, -10, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mgy0b")

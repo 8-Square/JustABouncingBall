@@ -86,9 +86,9 @@ script = ExtResource("1_hkjg3")
 metadata/_edit_use_anchors_ = true
 
 [node name="SingleplayerScreen" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SingleplayerScreen"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -152,7 +152,72 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_cu7og")
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="SingleplayerScreen"]
+z_index = -2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -16.5
+offset_right = 155.5
+offset_bottom = 256.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="InfRound" type="Button" parent="SingleplayerScreen/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
+text = "No Limit"
+
+[node name="ThreeRound" type="Button" parent="SingleplayerScreen/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_h80b2")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_hkjg3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hwn8f")
+text = " First to three "
+
+[node name="FiveRound" type="Button" parent="SingleplayerScreen/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_mua11")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qh2q1")
+text = "First to five"
+
+[node name="TenRound" type="Button" parent="SingleplayerScreen/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
+text = "First to ten"
+
+[node name="Label" type="Label" parent="SingleplayerScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "
+
+Singleplayer Mode"
+label_settings = ExtResource("3_x778w")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="MultiplayerScreen" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MultiplayerScreen"]
 z_index = -2
@@ -274,7 +339,19 @@ theme_override_constants/separation = 15
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Multiplayer" type="Button" parent="MainMenuScreen/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Singleplayer" type="Button" parent="MainMenuScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_iiond")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cu7og")
+text = " Singleplayer "
+
+[node name="Multiplayer" type="Button" parent="MainMenuScreen/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hkjg3")
 theme_override_font_sizes/font_size = 45
@@ -283,6 +360,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_cu7og")
 text = " Multiplayer "
 
 [node name="Settings" type="Button" parent="MainMenuScreen/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hkjg3")
 theme_override_font_sizes/font_size = 45
@@ -297,6 +375,24 @@ theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
 text = "Quit"
+
+[node name="Credits" type="Button" parent="MainMenuScreen"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -61.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_iiond")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cu7og")
+text = "Credits"
 
 [node name="BackgroundStars" type="Parallax2D" parent="."]
 z_index = 1
@@ -338,6 +434,8 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="MultiplayerScreen/VBoxContainer/TenRound" to="." method="_on_M_ten_round_pressed"]
 [connection signal="pressed" from="MultiplayerScreen/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="SettingScreen/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="MainMenuScreen/VBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="MainMenuScreen/VBoxContainer/HBoxContainer/Singleplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="MainMenuScreen/VBoxContainer/HBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="MainMenuScreen/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainMenuScreen/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MainMenuScreen/Credits" to="." method="_on_credits_pressed"]

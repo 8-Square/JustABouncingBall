@@ -1,14 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bky553vk36but"]
+[gd_scene load_steps=3 format=3 uid="uid://bdgab03iludq6"]
 
-[ext_resource type="Script" uid="uid://dcsificax63vr" path="res://Assets/Scripts/character.gd" id="1_mgy0b"]
+[ext_resource type="Script" uid="uid://du5ejvd6jbq2x" path="res://Assets/Scenes/Characters/bot.gd" id="1_8t6d0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mgy0b"]
 size = Vector2(20, 60)
 
-[node name="Ball" type="CharacterBody2D"]
+[node name="Bot" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_mgy0b")
-player_id = 1
+script = ExtResource("1_8t6d0")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-10, -30, 10, -30, 10, 30, -10, 30)
