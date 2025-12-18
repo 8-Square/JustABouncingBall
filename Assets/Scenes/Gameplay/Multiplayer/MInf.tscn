@@ -1,10 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://drf7xuogampvc"]
+[gd_scene load_steps=13 format=3 uid="uid://drf7xuogampvc"]
 
-[ext_resource type="Script" uid="uid://ck06f13afie1b" path="res://Assets/Scripts/levels/m_inf.gd" id="1_48f83"]
+[ext_resource type="Script" uid="uid://crk5j3tw1kkpc" path="res://Assets/Scripts/levels/game_screen.gd" id="1_11epw"]
 [ext_resource type="PackedScene" uid="uid://bky553vk36but" path="res://Assets/Scenes/Characters/character.tscn" id="2_ao7nk"]
-[ext_resource type="Script" uid="uid://e8m110d1our5" path="res://Assets/Scripts/inf_character.gd" id="3_ucgdo"]
 [ext_resource type="PackedScene" uid="uid://chj1ri0ylk2rn" path="res://Assets/Scenes/Characters/ball.tscn" id="4_b51g0"]
-[ext_resource type="Script" uid="uid://cokawa2sw63if" path="res://Assets/Scripts/ball.gd" id="5_c6xmk"]
 [ext_resource type="Texture2D" uid="uid://nhmfmjy8hxpr" path="res://Assets/Sprites/4.png" id="6_wijce"]
 [ext_resource type="Texture2D" uid="uid://cuapvqtd3o0vb" path="res://Assets/Sprites/3.png" id="7_c0uko"]
 [ext_resource type="Texture2D" uid="uid://t012cpnwp7xd" path="res://Assets/Sprites/2.png" id="8_wymb3"]
@@ -27,14 +25,15 @@ font_size = 50
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Game" type="Control"]
+[node name="Game" type="Control" node_paths=PackedStringArray("pause_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_48f83")
+script = ExtResource("1_11epw")
+pause_menu = NodePath("PauseMenu")
 metadata/_edit_use_anchors_ = true
 
 [node name="MiddleLine" type="ColorRect" parent="."]
@@ -77,18 +76,15 @@ polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
 
 [node name="PlayerOne" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("2_ao7nk")]
 position = Vector2(33, 308)
-script = ExtResource("3_ucgdo")
 score_label = NodePath("../Score/ScorePlayerOne")
 
 [node name="PlayerTwo" parent="." node_paths=PackedStringArray("score_label") instance=ExtResource("2_ao7nk")]
 position = Vector2(1105, 308)
-script = ExtResource("3_ucgdo")
 player_id = 2
 score_label = NodePath("../Score/ScorePlayerTwo")
 
 [node name="Ball" parent="." node_paths=PackedStringArray("player_one", "player_two") instance=ExtResource("4_b51g0")]
 position = Vector2(576, 324)
-script = ExtResource("5_c6xmk")
 player_one = NodePath("../PlayerOne")
 player_two = NodePath("../PlayerTwo")
 

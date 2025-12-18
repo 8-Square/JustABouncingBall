@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7vh3dqo5hai5"]
+[gd_scene load_steps=15 format=3 uid="uid://b7vh3dqo5hai5"]
 
-[ext_resource type="Script" uid="uid://bv7am44cocrfs" path="res://Assets/Scripts/levels/m_level.gd" id="1_gqbix"]
+[ext_resource type="Script" uid="uid://crk5j3tw1kkpc" path="res://Assets/Scripts/levels/game_screen.gd" id="1_gqbix"]
 [ext_resource type="PackedScene" uid="uid://bky553vk36but" path="res://Assets/Scenes/Characters/character.tscn" id="2_711dl"]
-[ext_resource type="Script" uid="uid://crhqvfllwk205" path="res://Assets/Scripts/level_character.gd" id="3_oejq3"]
 [ext_resource type="PackedScene" uid="uid://chj1ri0ylk2rn" path="res://Assets/Scenes/Characters/ball.tscn" id="4_8fjnt"]
 [ext_resource type="Texture2D" uid="uid://nhmfmjy8hxpr" path="res://Assets/Sprites/4.png" id="5_02hgg"]
 [ext_resource type="Texture2D" uid="uid://cuapvqtd3o0vb" path="res://Assets/Sprites/3.png" id="6_cu8b2"]
@@ -28,7 +27,7 @@ font_size = 50
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Game" type="Control" node_paths=PackedStringArray("finish_score")]
+[node name="Game" type="Control" node_paths=PackedStringArray("pause_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +35,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gqbix")
-finish_score = NodePath("MaxScore")
+pause_menu = NodePath("PauseMenu")
 metadata/_edit_use_anchors_ = true
 
 [node name="MiddleLine" type="ColorRect" parent="."]
@@ -77,18 +76,16 @@ shape = SubResource("RectangleShape2D_nbu75")
 color = Color(0.7254902, 0.7254902, 0.7254902, 1)
 polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
 
-[node name="PlayerOne" parent="." node_paths=PackedStringArray("max_score", "score_label") instance=ExtResource("2_711dl")]
+[node name="PlayerOne" parent="." node_paths=PackedStringArray("score_label", "max_score") instance=ExtResource("2_711dl")]
 position = Vector2(33, 308)
-script = ExtResource("3_oejq3")
-max_score = NodePath("../MaxScore")
 score_label = NodePath("../Score/ScorePlayerOne")
-
-[node name="PlayerTwo" parent="." node_paths=PackedStringArray("max_score", "score_label") instance=ExtResource("2_711dl")]
-position = Vector2(1105, 308)
-script = ExtResource("3_oejq3")
 max_score = NodePath("../MaxScore")
+
+[node name="PlayerTwo" parent="." node_paths=PackedStringArray("score_label", "max_score") instance=ExtResource("2_711dl")]
+position = Vector2(1105, 308)
 player_id = 2
 score_label = NodePath("../Score/ScorePlayerTwo")
+max_score = NodePath("../MaxScore")
 
 [node name="Ball" parent="." node_paths=PackedStringArray("player_one", "player_two") instance=ExtResource("4_8fjnt")]
 position = Vector2(576, 324)

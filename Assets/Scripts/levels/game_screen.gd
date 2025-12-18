@@ -1,19 +1,11 @@
 class_name GameScreen extends Control
 
-@onready var score_block = $Score
-@onready var playerOne = $PlayerOne
-@onready var playerTwo = $PlayerTwo
-@onready var ball = $Ball
-@onready var pause_menu = $PauseMenu
+@export var pause_menu: Control
 
 var game_paused: bool = false
 
 func _ready() -> void:
-	pass
-	#playerOne.add_to_group("Moveables")
-	#playerTwo.add_to_group("Moveables")
-	#ball.add_to_group("Moveables")
-
+	pause_menu.connect("resume_pressed", Callable(self, "resume_pressed"))
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("cancel") and game_paused == false:

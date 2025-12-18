@@ -1,9 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://cryd4qbva6nus"]
+[gd_scene load_steps=15 format=3 uid="uid://cryd4qbva6nus"]
 
 [ext_resource type="Texture2D" uid="uid://t012cpnwp7xd" path="res://Assets/Sprites/2.png" id="1_h80b2"]
 [ext_resource type="Script" uid="uid://bku6y4882u383" path="res://Assets/Scripts/main_menu.gd" id="1_hkjg3"]
 [ext_resource type="FontFile" uid="uid://bmt3a0bbbisc5" path="res://Assets/Fonts/ChillPixels-Maximal.otf" id="2_hkjg3"]
 [ext_resource type="LabelSettings" uid="uid://dh384p0y2ai21" path="res://Assets/Fonts/Label.tres" id="3_x778w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pr3u"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.5019608)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+expand_margin_top = 2.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ja6j"]
+bg_color = Color(0.10980392, 0.10980392, 0.10980392, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h80b2"]
 bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.5019608)
@@ -28,6 +44,21 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mua11"]
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.5019608)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh2q1"]
+bg_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iiond"]
 bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.5019608)
 border_width_left = 6
@@ -44,36 +75,9 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mua11"]
-bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.5019608)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-expand_margin_bottom = 4.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh2q1"]
-bg_color = Color(0.16862746, 0.16862746, 0.16862746, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7pr3u"]
-bg_color = Color(0.078431375, 0.078431375, 0.078431375, 0.5019608)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-expand_margin_top = 2.0
-expand_margin_bottom = 4.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ja6j"]
-bg_color = Color(0.10980392, 0.10980392, 0.10980392, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+[sub_resource type="LabelSettings" id="LabelSettings_x778w"]
+font = ExtResource("2_hkjg3")
+font_size = 32
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -86,6 +90,60 @@ script = ExtResource("1_hkjg3")
 metadata/_edit_use_anchors_ = true
 
 [node name="SingleplayerScreen" type="CanvasLayer" parent="."]
+
+[node name="GameType" type="CanvasLayer" parent="SingleplayerScreen"]
+visible = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="SingleplayerScreen/GameType"]
+z_index = -2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.5
+offset_top = -16.5
+offset_right = 171.5
+offset_bottom = 256.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="InfRound" type="Button" parent="SingleplayerScreen/GameType/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
+text = "No Limit"
+
+[node name="ThreeRound" type="Button" parent="SingleplayerScreen/GameType/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_h80b2")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_hkjg3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hwn8f")
+text = " First to three "
+
+[node name="FiveRound" type="Button" parent="SingleplayerScreen/GameType/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_mua11")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qh2q1")
+text = "First to five"
+
+[node name="TenRound" type="Button" parent="SingleplayerScreen/GameType/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
+text = "First to ten"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SingleplayerScreen"]
 visible = false
@@ -152,57 +210,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_cu7og")
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="SingleplayerScreen"]
-z_index = -2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -155.5
-offset_top = -16.5
-offset_right = 155.5
-offset_bottom = 256.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 15
-alignment = 1
-
-[node name="InfRound" type="Button" parent="SingleplayerScreen/VBoxContainer2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_hkjg3")
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
-text = "No Limit"
-
-[node name="ThreeRound" type="Button" parent="SingleplayerScreen/VBoxContainer2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_hkjg3")
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_h80b2")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_hkjg3")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hwn8f")
-text = " First to three "
-
-[node name="FiveRound" type="Button" parent="SingleplayerScreen/VBoxContainer2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_hkjg3")
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_mua11")
-theme_override_styles/hover = SubResource("StyleBoxFlat_qh2q1")
-text = "First to five"
-
-[node name="TenRound" type="Button" parent="SingleplayerScreen/VBoxContainer2"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_hkjg3")
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
-theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
-text = "First to ten"
-
 [node name="Label" type="Label" parent="SingleplayerScreen"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -213,6 +220,24 @@ text = "
 
 Singleplayer Mode"
 label_settings = ExtResource("3_x778w")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BotDifficultyLabel" type="Label" parent="SingleplayerScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "
+
+
+
+
+
+
+Bot Difficulty"
+label_settings = SubResource("LabelSettings_x778w")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://6jv44nj0a8hg"]
 
-[ext_resource type="Script" uid="uid://dkl7weuj0dibu" path="res://Assets/Scripts/levels/s_level.gd" id="1_qmncn"]
+[ext_resource type="Script" uid="uid://crk5j3tw1kkpc" path="res://Assets/Scripts/levels/game_screen.gd" id="1_6bcgg"]
 [ext_resource type="PackedScene" uid="uid://bky553vk36but" path="res://Assets/Scenes/Characters/character.tscn" id="2_imiuw"]
 [ext_resource type="PackedScene" uid="uid://bdgab03iludq6" path="res://Assets/Scenes/Characters/bot.tscn" id="4_qmncn"]
 [ext_resource type="PackedScene" uid="uid://chj1ri0ylk2rn" path="res://Assets/Scenes/Characters/ball.tscn" id="4_wilqd"]
@@ -28,15 +28,15 @@ font_size = 50
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Game" type="Control" node_paths=PackedStringArray("finish_score")]
+[node name="Game" type="Control" node_paths=PackedStringArray("pause_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qmncn")
-finish_score = NodePath("MaxScore")
+script = ExtResource("1_6bcgg")
+pause_menu = NodePath("PauseMenu")
 metadata/_edit_use_anchors_ = true
 
 [node name="MiddleLine" type="ColorRect" parent="."]
@@ -195,5 +195,6 @@ visible = false
 [node name="Fade" parent="WinMenu/CanvasLayer" index="0"]
 visible = true
 
+[editable path="Bot"]
 [editable path="PauseMenu"]
 [editable path="WinMenu"]

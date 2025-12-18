@@ -1,7 +1,5 @@
 class_name S_GameScreen extends Control
 
-@onready var score_block = $Score
-@onready var ball = $Ball
 @onready var pause_menu = $PauseMenu
 
 var game_paused: bool = false
