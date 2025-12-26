@@ -20,12 +20,15 @@ func on_score_achieved(player_id: int) -> void:
 		match player_id:
 			0: 
 				$"../../WinMenu/CanvasLayer/BotWin".visible = true
+				$"../../WinMenu/BotWin".play()
 				print("BOT WINS")
 			1:
 				$"../../WinMenu/CanvasLayer/PlayerOneWin".visible = true
+				$"../../WinMenu/PlayerWin".play()
 				print("PLAYER ONE WINS")
 			2:
 				$"../../WinMenu/CanvasLayer/PlayerTwoWin".visible = true
+				$"../../WinMenu/PlayerWin".play()
 				print("PLAYER TWO WINS")
 			_:
 				print("Error, Not found WinMenu")
