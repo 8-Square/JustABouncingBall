@@ -2,9 +2,10 @@ class_name Ball extends CharacterBody2D
 
 @onready var score_block = get_tree().current_scene.get_node("Score/")
 
+@onready var bounce_sfx: AudioStreamPlayer = $AudioStreamPlayer
+
 @export var player_one : Node2D
 @export var player_two : Node2D
-
 @export var player_contact: int
 @export var wall_contact: int
 
@@ -44,6 +45,8 @@ func _physics_process(delta: float) -> void:
 		var collider = collision.get_collider()
 		var normal = collision.get_normal()
 		
+		bounce_sfx.play()
+		
 		if collider is Player:
 			collision_count += 1
 			SPEED += player_contact
@@ -57,7 +60,7 @@ func _physics_process(delta: float) -> void:
 			print(SPEED)
 			print("COLLISION NUMBER IS ON ", collision_count)
 			velocity = velocity.bounce(normal)
-	
+		
 	velocity = velocity.normalized() * SPEED
 
 func random_bounceback(collider):

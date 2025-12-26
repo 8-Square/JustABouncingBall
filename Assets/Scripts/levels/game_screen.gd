@@ -2,7 +2,11 @@ class_name GameScreen extends Control
 
 @export var pause_menu: Control
 
+@onready var music_player = get_tree().current_scene.get_node("Background/BackgroundMusic")
+
 var game_paused: bool = false
+var music_position = 0.0
+var music_playing = false
 
 func _ready() -> void:
 	pause_menu.connect("resume_pressed", Callable(self, "resume_pressed"))

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bnn3yvsf0q6no"]
+[gd_scene load_steps=10 format=3 uid="uid://bnn3yvsf0q6no"]
 
 [ext_resource type="Script" uid="uid://bukjmxpx0vvl8" path="res://Assets/Scripts/gameplay/background.gd" id="1_4tvi0"]
 [ext_resource type="Texture2D" uid="uid://nhmfmjy8hxpr" path="res://Assets/Sprites/4.png" id="1_vuhp7"]
 [ext_resource type="Texture2D" uid="uid://cuapvqtd3o0vb" path="res://Assets/Sprites/3.png" id="2_nvdb0"]
 [ext_resource type="Texture2D" uid="uid://t012cpnwp7xd" path="res://Assets/Sprites/2.png" id="3_4tvi0"]
-[ext_resource type="AudioStream" uid="uid://2cavs42sd7sj" path="res://Assets/Music/Background Music.mp3" id="4_nvdb0"]
+[ext_resource type="AudioStream" uid="uid://bvfxlft00sc24" path="res://Assets/Music/Looping Background Music.mp3" id="5_0ja5u"]
+[ext_resource type="AudioStream" uid="uid://bqkrcljq0gpmd" path="res://Assets/Music/Starting Background Music.mp3" id="6_0ja5u"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0ja5u"]
 
@@ -107,12 +108,12 @@ color = Color(0.7254902, 0.7254902, 0.7254902, 1)
 polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_nvdb0")
+stream = ExtResource("5_0ja5u")
 volume_db = -10.0
 parameters/looping = true
 
 [node name="StartingBackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_nvdb0")
+stream = ExtResource("6_0ja5u")
 volume_db = -10.0
 autoplay = true
 parameters/looping = true
