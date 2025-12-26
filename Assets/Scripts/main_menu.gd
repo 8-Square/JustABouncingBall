@@ -16,11 +16,15 @@ func _ready() -> void:
 	s_game_type_select.hide()
 	back_singleplayer.show()
 	
-
+	# Checks for buttons and if it isnt connected to button pressed, then connect it 
+	for button in get_tree().get_nodes_in_group("Button"):
+		if not button.pressed.is_connected(button_pressed):
+			button.pressed.connect(button_pressed)
 
 
 func button_pressed() -> void:
 	ui_select.play()
+
 func _on_singleplayer_pressed() -> void:
 	$MainMenuScreen.hide()
 	$SingleplayerScreen.show()
@@ -50,7 +54,7 @@ func _on_back_pressed() -> void:
 func _on_difficulty_selected(Difficulty: String) -> void:
 	GlobalDifficulty.bot_difficulty = Difficulty
 	
-	#print(GlobalDifficulty.bot_difficulty)
+	print(GlobalDifficulty.bot_difficulty)
 	back_singleplayer_2.show()
 	back_singleplayer.hide()
 	s_difficulty_select.hide()

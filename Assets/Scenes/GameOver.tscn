@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b403tcnpfhmcx"]
+[gd_scene load_steps=13 format=3 uid="uid://b403tcnpfhmcx"]
 
 [ext_resource type="Script" uid="uid://q1aqrsvt5ch1" path="res://Assets/Scripts/pause_menu.gd" id="1_chmfa"]
 [ext_resource type="Shader" uid="uid://8af3arrfntrn" path="res://Assets/Sprites/pause_menu.gdshader" id="2_8afkq"]
 [ext_resource type="LabelSettings" uid="uid://dh384p0y2ai21" path="res://Assets/Fonts/Label.tres" id="3_8afkq"]
 [ext_resource type="FontFile" uid="uid://bmt3a0bbbisc5" path="res://Assets/Fonts/ChillPixels-Maximal.otf" id="3_vqw4q"]
+[ext_resource type="AudioStream" uid="uid://b2s8negt16k6d" path="res://Assets/Music/UISelect.mp3" id="5_vqw4q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dadan"]
 shader = ExtResource("2_8afkq")
@@ -158,7 +159,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
 
-[node name="Restart" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="Restart" type="Button" parent="CanvasLayer/VBoxContainer" groups=["Button"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vqw4q")
 theme_override_font_sizes/font_size = 50
@@ -167,7 +168,7 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_6udtp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_dadan")
 text = "Restart"
 
-[node name="Main Menu" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="Main Menu" type="Button" parent="CanvasLayer/VBoxContainer" groups=["Button"]]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vqw4q")
 theme_override_font_sizes/font_size = 50
@@ -180,6 +181,10 @@ text = "Main Menu"
 libraries = {
 &"": SubResource("AnimationLibrary_48c7y")
 }
+
+[node name="UISelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vqw4q")
+volume_db = -5.0
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]

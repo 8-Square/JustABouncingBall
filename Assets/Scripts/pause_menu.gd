@@ -1,7 +1,17 @@
 class_name PauseMenu extends Control
 
 @onready var music_player = get_tree().current_scene.get_node("Background/BackgroundMusic")
+@onready var ui_select: AudioStreamPlayer = $UISelect
 
+func _ready() -> void:
+	# Checks for buttons and if it isnt connected to button pressed, then connect it 
+	for button in get_tree().get_nodes_in_group("Button"):
+		if not button.pressed.is_connected(button_pressed):
+			button.pressed.connect(button_pressed)
+
+
+func button_pressed() -> void:
+	ui_select.play()
 
 signal resume_pressed
 
