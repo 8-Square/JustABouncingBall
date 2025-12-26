@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 		
 		bounce_sfx.play()
 		
-		if collider is Player:
+		if collider is Paddle:
 			collision_count += 1
 			SPEED += player_contact
 			if abs(normal.x) > abs(normal.y):

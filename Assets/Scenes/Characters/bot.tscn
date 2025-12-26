@@ -9,7 +9,6 @@ size = Vector2(20, 60)
 [node name="Bot" type="CharacterBody2D" groups=["Moveables"]]
 motion_mode = 1
 script = ExtResource("1_8t6d0")
-player_id = 3
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-10, -30, 10, -30, 10, 30, -10, 30)

@@ -17,4 +17,4 @@ polygon = PackedVector2Array(-10, -30, 10, -30, 10, 30, -10, 30)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mgy0b")
 
-[node name="ScoreSystem" parent="." instance=ExtResource("2_exwov")]
+[node name="ScoreBit" parent="." instance=ExtResource("2_exwov")]

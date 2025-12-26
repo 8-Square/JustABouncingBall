@@ -2,9 +2,6 @@ class_name PauseMenu extends Control
 
 @onready var music_player = get_tree().current_scene.get_node("Background/BackgroundMusic")
 
-var music_position = 0.0
-var music_playing = false
-
 
 signal resume_pressed
 

@@ -3,7 +3,7 @@ class_name Paddle extends CharacterBody2D
 @export var player_id: int
 @export var score_label: Label
 @export var max_score: MaxScore
-@onready var score_bit = $"ScoreSystem"
+@onready var score_bit = $"ScoreBit"
 
 
 var SPEED: float = 400

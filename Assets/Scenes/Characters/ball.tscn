@@ -45,6 +45,6 @@ rect = Rect2(0, 0, 3, 3)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_invuo")
-volume_db = -5.0
+volume_db = -7.0
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_ball_exited"]

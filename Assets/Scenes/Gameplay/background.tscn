@@ -15,8 +15,9 @@ size = Vector2(1154, 22)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j40e1"]
 size = Vector2(1154, 22)
 
-[node name="Background" type="Node2D"]
+[node name="Background" type="Node2D" node_paths=PackedStringArray("musicplayers")]
 script = ExtResource("1_4tvi0")
+musicplayers = [NodePath("BackgroundMusic"), NodePath("StartingBackgroundMusic")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1

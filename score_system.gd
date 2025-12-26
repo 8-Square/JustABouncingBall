@@ -15,18 +15,18 @@ var game_paused: bool = false
 func on_score_achieved(player_id: int) -> void:
 		game_paused = true
 		game_screen.stop_game()
-		print("PLAYER ONE WINS")
+		print("WINNING")
 		win_menu.visible = true
 		match player_id:
 			0: 
 				$"../../WinMenu/CanvasLayer/BotWin".visible = true
-				print("PLAYER ONE WINS")
+				print("BOT WINS")
 			1:
 				$"../../WinMenu/CanvasLayer/PlayerOneWin".visible = true
-				print("PLAYER TWO WINS")
+				print("PLAYER ONE WINS")
 			2:
 				$"../../WinMenu/CanvasLayer/PlayerTwoWin".visible = true
-				print("PLAYER BOT WINS")
+				print("PLAYER TWO WINS")
 			_:
 				print("Error, Not found WinMenu")
 		ball.visible = false

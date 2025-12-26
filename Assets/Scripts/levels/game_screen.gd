@@ -2,7 +2,7 @@ class_name GameScreen extends Control
 
 @export var pause_menu: Control
 
-@onready var music_player = get_tree().current_scene.get_node("Background/BackgroundMusic")
+@onready var background: Background = $Background
 
 var game_paused: bool = false
 var music_position = 0.0
@@ -31,14 +31,15 @@ func movement() -> void:
 func resume_pressed():
 	game_paused = false
 	movement()
-	$PauseMenu/CanvasLayer.visible = false
 
 func stop_game():
+	background.stop_music()
 	for character in get_tree().get_nodes_in_group("Moveables"):
 		if "can_control" in character:
 			character.can_control = false
 
 func continue_game():
+	background.play_music()
 	for character in get_tree().get_nodes_in_group("Moveables"):
 		if "can_control" in character:
 			character.can_control = true
