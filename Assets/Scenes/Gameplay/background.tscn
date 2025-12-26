@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://bnn3yvsf0q6no"]
+
+[ext_resource type="Script" uid="uid://bukjmxpx0vvl8" path="res://Assets/Scripts/gameplay/background.gd" id="1_4tvi0"]
+[ext_resource type="Texture2D" uid="uid://nhmfmjy8hxpr" path="res://Assets/Sprites/4.png" id="1_vuhp7"]
+[ext_resource type="Texture2D" uid="uid://cuapvqtd3o0vb" path="res://Assets/Sprites/3.png" id="2_nvdb0"]
+[ext_resource type="Texture2D" uid="uid://t012cpnwp7xd" path="res://Assets/Sprites/2.png" id="3_4tvi0"]
+[ext_resource type="AudioStream" uid="uid://2cavs42sd7sj" path="res://Assets/Music/Background Music.mp3" id="4_nvdb0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0ja5u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwo22"]
+size = Vector2(1154, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j40e1"]
+size = Vector2(1154, 22)
+
+[node name="Background" type="Node2D"]
+script = ExtResource("1_4tvi0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.003921569, 0.003921569, 0.003921569, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Parallax2D2" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(576, 576)
+autoscroll = Vector2(9, 3)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D2"]
+position = Vector2(287, 323)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("1_vuhp7")
+
+[node name="Parallax2D3" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(576, 576)
+autoscroll = Vector2(15, -6)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D3"]
+position = Vector2(287, 323)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_nvdb0")
+
+[node name="Parallax2D4" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(576, 576)
+autoscroll = Vector2(20, -10)
+repeat_times = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Parallax2D4"]
+position = Vector2(287, 323)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("3_4tvi0")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08468998, 0.08468991, 0.08468992, 0.81960785)
+
+[node name="MiddleLine" type="ColorRect" parent="CanvasLayer"]
+custom_minimum_size = Vector2(4, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.7877592, 0.78775924, 0.787759, 1)
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2(576, 0)
+physics_material_override = SubResource("PhysicsMaterial_0ja5u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_nwo22")
+
+[node name="Polygon2D" type="Polygon2D" parent="TopWall"]
+color = Color(0.72464263, 0.7246426, 0.7246426, 1)
+polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2(576, 648)
+physics_material_override = SubResource("PhysicsMaterial_0ja5u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_j40e1")
+
+[node name="Polygon2D" type="Polygon2D" parent="BottomWall"]
+color = Color(0.7254902, 0.7254902, 0.7254902, 1)
+polygon = PackedVector2Array(577, -10, 577, 10, -577, 10, -577, -10)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nvdb0")
+volume_db = -10.0
+parameters/looping = true
+
+[node name="StartingBackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nvdb0")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true

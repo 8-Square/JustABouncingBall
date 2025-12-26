@@ -1,21 +1,16 @@
-class_name Bot extends CharacterBody2D
+class_name Bot extends Paddle
+# Player id will be 0 as in this case this will be 0 as bot isnt a player
 
-@export var player_id: int
-# in this case this will be 0 as bot isnt a player
-@export var max_score: Node
 @export var ball: CharacterBody2D
-@export var score_label: Label
-@onready var score_bit = $ScoreBit
 
 var ball_position: Vector2
 var distance: int
 var move_by: int
-var SPEED: float = 400
 
-var score: int = 0
-var can_control: bool = true
+var reaction_time: int
 
-signal score_achieved(player_id)
+func _ready() -> void:
+	pass
 
 func _process(delta: float) -> void:
 	if not can_control:
@@ -24,17 +19,10 @@ func _process(delta: float) -> void:
 	ball_position = ball.global_position
 	distance = global_position.y - ball_position.y
 	
-	move_by = SPEED * delta * sign(distance)
+	if abs(distance) > SPEED * delta:
+		move_by = SPEED * delta * (distance / abs(distance))
+	else:
+		move_by = distance
 	position.y -= move_by
-	
-	
-	move_and_slide()
 
-func score_system():
-	score += 1
-	score_label.text = '%02d' % score
-	
-	if max_score != null and score >= max_score.FinishScore():
-		if score_bit != null:
-			score_bit.on_score_achieved(player_id)
-		print(player_id)
+	move_and_slide()

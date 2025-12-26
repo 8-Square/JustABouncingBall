@@ -91,11 +91,17 @@ metadata/_edit_use_anchors_ = true
 
 [node name="SingleplayerScreen" type="CanvasLayer" parent="."]
 
-[node name="GameType" type="CanvasLayer" parent="SingleplayerScreen"]
-visible = false
+[node name="GameTypeSelect" type="Control" parent="SingleplayerScreen"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="SingleplayerScreen/GameType"]
+[node name="GameDurationContainer" type="VBoxContainer" parent="SingleplayerScreen/GameTypeSelect"]
 z_index = -2
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -112,7 +118,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="InfRound" type="Button" parent="SingleplayerScreen/GameType/VBoxContainer2"]
+[node name="InfRound" type="Button" parent="SingleplayerScreen/GameTypeSelect/GameDurationContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hkjg3")
 theme_override_font_sizes/font_size = 45
@@ -120,7 +126,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
 text = "No Limit"
 
-[node name="ThreeRound" type="Button" parent="SingleplayerScreen/GameType/VBoxContainer2"]
+[node name="ThreeRound" type="Button" parent="SingleplayerScreen/GameTypeSelect/GameDurationContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hkjg3")
 theme_override_font_sizes/font_size = 45
@@ -129,7 +135,7 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_hkjg3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hwn8f")
 text = " First to three "
 
-[node name="FiveRound" type="Button" parent="SingleplayerScreen/GameType/VBoxContainer2"]
+[node name="FiveRound" type="Button" parent="SingleplayerScreen/GameTypeSelect/GameDurationContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hkjg3")
 theme_override_font_sizes/font_size = 45
@@ -137,7 +143,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_mua11")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qh2q1")
 text = "First to five"
 
-[node name="TenRound" type="Button" parent="SingleplayerScreen/GameType/VBoxContainer2"]
+[node name="TenRound" type="Button" parent="SingleplayerScreen/GameTypeSelect/GameDurationContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hkjg3")
 theme_override_font_sizes/font_size = 45
@@ -145,7 +151,18 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
 text = "First to ten"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SingleplayerScreen"]
+[node name="Back" type="Button" parent="SingleplayerScreen/GameTypeSelect"]
+layout_mode = 0
+offset_right = 188.0
+offset_bottom = 57.0
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_iiond")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cu7og")
+text = "Back2"
+metadata/_edit_use_anchors_ = true
+
+[node name="OLDTHING" type="VBoxContainer" parent="SingleplayerScreen"]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -162,12 +179,12 @@ theme_override_constants/separation = 15
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SingleplayerScreen/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SingleplayerScreen/OLDTHING"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_constants/separation = 35
 
-[node name="Singleplayer" type="Button" parent="SingleplayerScreen/VBoxContainer/HBoxContainer"]
+[node name="Singleplayer" type="Button" parent="SingleplayerScreen/OLDTHING/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hkjg3")
 theme_override_font_sizes/font_size = 45
@@ -176,7 +193,7 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_hkjg3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hwn8f")
 text = " Singleplayer "
 
-[node name="Multiplayer" type="Button" parent="SingleplayerScreen/VBoxContainer/HBoxContainer"]
+[node name="Multiplayer" type="Button" parent="SingleplayerScreen/OLDTHING/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hkjg3")
 theme_override_font_sizes/font_size = 45
@@ -184,7 +201,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_iiond")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cu7og")
 text = " Multiplayer "
 
-[node name="Settings" type="Button" parent="SingleplayerScreen/VBoxContainer"]
+[node name="Settings" type="Button" parent="SingleplayerScreen/OLDTHING"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hkjg3")
 theme_override_font_sizes/font_size = 45
@@ -192,23 +209,13 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_mua11")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qh2q1")
 text = "Settings"
 
-[node name="Quit" type="Button" parent="SingleplayerScreen/VBoxContainer"]
+[node name="Quit" type="Button" parent="SingleplayerScreen/OLDTHING"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hkjg3")
 theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
 text = "Quit"
-
-[node name="Back" type="Button" parent="SingleplayerScreen"]
-offset_right = 188.0
-offset_bottom = 57.0
-theme_override_fonts/font = ExtResource("2_hkjg3")
-theme_override_font_sizes/font_size = 45
-theme_override_styles/normal = SubResource("StyleBoxFlat_iiond")
-theme_override_styles/hover = SubResource("StyleBoxFlat_cu7og")
-text = "Back"
-metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="SingleplayerScreen"]
 anchors_preset = 15
@@ -223,7 +230,60 @@ label_settings = ExtResource("3_x778w")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="BotDifficultyLabel" type="Label" parent="SingleplayerScreen"]
+[node name="DifficultySelect" type="Control" parent="SingleplayerScreen"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BotDifficultyContainer" type="VBoxContainer" parent="SingleplayerScreen/DifficultySelect"]
+z_index = -2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.5
+offset_top = -16.5
+offset_right = 171.5
+offset_bottom = 256.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Hard" type="Button" parent="SingleplayerScreen/DifficultySelect/BotDifficultyContainer" groups=["Difficulty"]]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_7pr3u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2ja6j")
+text = "Hard"
+
+[node name="Medium" type="Button" parent="SingleplayerScreen/DifficultySelect/BotDifficultyContainer" groups=["Difficulty"]]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_h80b2")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_hkjg3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hwn8f")
+text = "Medium"
+
+[node name="Easy" type="Button" parent="SingleplayerScreen/DifficultySelect/BotDifficultyContainer" groups=["Difficulty"]]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_mua11")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qh2q1")
+text = "Easy"
+
+[node name="BotDifficultyLabel" type="Label" parent="SingleplayerScreen/DifficultySelect"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -239,6 +299,17 @@ text = "
 Bot Difficulty"
 label_settings = SubResource("LabelSettings_x778w")
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="Button" parent="SingleplayerScreen/DifficultySelect"]
+layout_mode = 0
+offset_right = 188.0
+offset_bottom = 57.0
+theme_override_fonts/font = ExtResource("2_hkjg3")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_iiond")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cu7og")
+text = "Back"
 metadata/_edit_use_anchors_ = true
 
 [node name="MultiplayerScreen" type="CanvasLayer" parent="."]
@@ -453,13 +524,18 @@ grow_vertical = 2
 color = Color(0.11764706, 0.11764706, 0.11764706, 0.81960785)
 metadata/_edit_use_anchors_ = true
 
+[connection signal="pressed" from="SingleplayerScreen/GameTypeSelect/Back" to="." method="_on_gametype_back_pressed"]
+[connection signal="pressed" from="SingleplayerScreen/DifficultySelect/BotDifficultyContainer/Hard" to="." method="_on_difficulty_selected" binds= ["hard"]]
+[connection signal="pressed" from="SingleplayerScreen/DifficultySelect/BotDifficultyContainer/Medium" to="." method="_on_difficulty_selected" binds= ["medium"]]
+[connection signal="pressed" from="SingleplayerScreen/DifficultySelect/BotDifficultyContainer/Easy" to="." method="_on_difficulty_selected" binds= ["easy"]]
+[connection signal="pressed" from="SingleplayerScreen/DifficultySelect/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="MultiplayerScreen/VBoxContainer/InfRound" to="." method="_m_on_inf_round_pressed"]
 [connection signal="pressed" from="MultiplayerScreen/VBoxContainer/ThreeRound" to="." method="_on_M_three_round_pressed"]
 [connection signal="pressed" from="MultiplayerScreen/VBoxContainer/FiveRound" to="." method="_on_M_five_round_pressed"]
 [connection signal="pressed" from="MultiplayerScreen/VBoxContainer/TenRound" to="." method="_on_M_ten_round_pressed"]
 [connection signal="pressed" from="MultiplayerScreen/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="SettingScreen/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="MainMenuScreen/VBoxContainer/HBoxContainer/Singleplayer" to="." method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="MainMenuScreen/VBoxContainer/HBoxContainer/Singleplayer" to="." method="_on_singleplayer_pressed"]
 [connection signal="pressed" from="MainMenuScreen/VBoxContainer/HBoxContainer/Multiplayer" to="." method="_on_multiplayer_pressed"]
 [connection signal="pressed" from="MainMenuScreen/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainMenuScreen/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

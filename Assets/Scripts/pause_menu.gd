@@ -1,10 +1,11 @@
 class_name PauseMenu extends Control
 
+@onready var music_player = get_tree().current_scene.get_node("Background/BackgroundMusic")
+
+var music_position = 0.0
+var music_playing = false
 
 
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
 signal resume_pressed
 
 func _on_resume_pressed():

@@ -1,9 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://chj1ri0ylk2rn"]
+[gd_scene load_steps=12 format=3 uid="uid://chj1ri0ylk2rn"]
 
 [ext_resource type="Script" uid="uid://cokawa2sw63if" path="res://Assets/Scripts/ball.gd" id="1_4e533"]
+[ext_resource type="AudioStream" uid="uid://b072xokh4npgs" path="res://Assets/Music/Ball/Bounce1.mp3" id="2_ibuui"]
+[ext_resource type="AudioStream" uid="uid://dsxq6bx5n3l57" path="res://Assets/Music/Ball/Bounce2.mp3" id="3_k0ls6"]
+[ext_resource type="AudioStream" uid="uid://bv5lgm1xtq1yq" path="res://Assets/Music/Ball/Bounce3.mp3" id="4_qd64l"]
+[ext_resource type="AudioStream" uid="uid://b52hx0x3w1gaa" path="res://Assets/Music/Ball/Bounce4.mp3" id="5_4w16m"]
+[ext_resource type="AudioStream" uid="uid://ceuj1y0obpsi2" path="res://Assets/Music/Ball/Bounce5.mp3" id="6_q8nak"]
+[ext_resource type="AudioStream" uid="uid://etvcscuh6hrr" path="res://Assets/Music/Ball/Bounce6.mp3" id="7_ikn1y"]
+[ext_resource type="AudioStream" uid="uid://bpnssdem2pemr" path="res://Assets/Music/Ball/Bounce7.mp3" id="8_8vy4e"]
+[ext_resource type="AudioStream" uid="uid://cymepkfyl3tat" path="res://Assets/Music/Ball/Bounce8.mp3" id="9_jr678"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cb73q"]
 size = Vector2(3, 3)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_invuo"]
+random_pitch = 1.2
+streams_count = 8
+stream_0/stream = ExtResource("2_ibuui")
+stream_1/stream = ExtResource("3_k0ls6")
+stream_2/stream = ExtResource("4_qd64l")
+stream_3/stream = ExtResource("5_4w16m")
+stream_4/stream = ExtResource("6_q8nak")
+stream_5/stream = ExtResource("7_ikn1y")
+stream_6/stream = ExtResource("8_8vy4e")
+stream_7/stream = ExtResource("9_jr678")
 
 [node name="Ball" type="CharacterBody2D" groups=["Moveables"]]
 scale = Vector2(8, 8)
@@ -22,5 +42,9 @@ polygon = PackedVector2Array(0, 0, 1, 0, 2, 1, 2, 2, 1, 3, 0, 3, -1, 2, -1, 1)
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-1.5, -1.5)
 rect = Rect2(0, 0, 3, 3)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_invuo")
+volume_db = -5.0
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_ball_exited"]
