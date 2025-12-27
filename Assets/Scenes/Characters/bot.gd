@@ -11,6 +11,7 @@ var bot_speed: float
 var reaction_time: float
 var offset := 0.0
 var target_y := 0.0
+var dead_zone = 6
 
 
 func _ready() -> void:
@@ -54,7 +55,6 @@ func _process(delta: float) -> void:
 				reaction_time = 0.02
 		
 	distance = target_y - global_position.y
-	var dead_zone = 6
 	
 	if abs(distance) > dead_zone:
 		move_by = clamp(distance, -bot_speed * delta, bot_speed * delta)
