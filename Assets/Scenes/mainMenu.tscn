@@ -408,25 +408,20 @@ metadata/_edit_use_anchors_ = true
 layer = 0
 
 [node name="Label" type="Label" parent="MainMenuScreen"]
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -345.0
-offset_top = -115.5
 offset_right = 345.0
-offset_bottom = 115.5
+offset_bottom = 231.0
 grow_horizontal = 2
-grow_vertical = 2
 text = "
+
 JustABouncingBall"
 label_settings = ExtResource("3_x778w")
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuScreen"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -443,7 +438,6 @@ alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenuScreen/VBoxContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 30
 
